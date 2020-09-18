@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tomee>
+    <Resource id="jdbc/my_db" type="javax.sql.DataSource">
+        JdbcDriver  com.mysql.jdbc.Driver
+        JdbcUrl jdbc:mysql://db-mysql:3306/myDb
+        UserName    root
+        Password    root
+    </Resource>
+</tomee>

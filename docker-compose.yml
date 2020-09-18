@@ -1,0 +1,26 @@
+version: "3"
+services:
+  db:
+    image: mysql:5.5
+    container_name: db-mysql
+    environment:
+      MYSQL_DATABASE: myDb
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./src/main/resources/db-scripts:/docker-entrypoint-initdb.d
+  web:
+    container_name: app-web
+    build: .
+    restart: always
+    image: app:v1
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+networks:
+  default:
+    external:
+      name: dedalus-network
